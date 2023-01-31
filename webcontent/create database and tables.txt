@@ -1,0 +1,29 @@
+create database phonebook;
+use phonebook;
+
+
+CREATE TABLE user (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  email varchar(500) NOT NULL,
+  password varchar(100) NOT NULL,
+  mobile int NOT NULL,
+  profile varchar(100) DEFAULT 'default.png',
+  PRIMARY KEY (id),
+  UNIQUE KEY email (email)
+);
+
+
+
+
+
+CREATE TABLE contact (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  email varchar(200) NOT NULL,
+  mobile int NOT NULL,
+  uid int NOT NULL,
+  PRIMARY KEY (id),
+  KEY uid (uid),
+  CONSTRAINT contact_ibfk_1 FOREIGN KEY (uid) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE
+);
